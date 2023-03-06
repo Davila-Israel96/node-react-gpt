@@ -1,13 +1,15 @@
-const path = require("path");
-const express = require("express");
+const path = require('path');
+const express = require('express');
+const { config } = require('dotenv');
 
+config();
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 // use routers
-const openAiRouter = require("./routes/openAi");
-app.use("/gpt", openAiRouter);
+const openAiRouter = require('./routes/openAi');
+app.use('/gpt', openAiRouter);
 
 // listen to port
 app.listen(PORT, () => {
@@ -22,6 +24,6 @@ app.listen(PORT, () => {
 // 	res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 // });
 
-app.get("/text", (req, res) => {
-	res.json({ data: "this is data" });
+app.get('/text', (req, res) => {
+	res.json({ data: 'this is data' });
 });
