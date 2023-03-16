@@ -4,14 +4,19 @@ function App() {
 	const [apiData, setApiData] = useState("");
 
 	useEffect(() => {
-		fetch("/gpt")
+		fetch("/gpt/genImg")
 			.then((response) => response.json())
 			.then((data) => {
+				console.log(data);
 				setApiData(data);
 			});
 	}, []);
 
-	return <div className="App">{apiData.data}</div>;
+	return (
+		<div className="img-fluid">
+			<img src={apiData.image} alt="none found" />
+		</div>
+	);
 }
 
 export default App;
